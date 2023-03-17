@@ -1,0 +1,72 @@
+{% load static %}
+<html>
+<head>
+<title>Preventing Social Media Phishing in social networks</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="{% static 'default.css' %}" rel="stylesheet" type="text/css" media="screen" />
+ <script LANGUAGE="Javascript" >
+function validate(){
+	var x=document.forms["f1"]["t1"].value;
+	if(x == null || x==""){
+		window.alert("Please enter account details");
+		document.f1.t1.focus();
+		return false;
+	}
+	
+	return true;
+}
+		
+	
+	</script>
+</head>
+<body>
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+      <h1><font color="orange" size=6>Preventing Social Media Phishing in social networks</font></h1>
+	  <marquee><font color="pink" size=4>Social Media Phishing Profiles Detection</font></marquee>
+    </div>
+   
+  
+    </div>
+  </div>
+  <div id="menu">
+     <ul>
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'Admin' %}">Admin</a></li>
+      <li><a href="{% url 'User' %}">Users</a></li>
+      
+   </ul>
+  </div>
+  <div class="entry">
+   <br/><br/><br/>
+	
+	 <br>
+	 <center><font style="Times New Roman" size="9" color="white">User Account Check Screen</font></center><br><br><br>
+		<center><p><font size="4" color="white"><b>Enter data in form of numbers.</b><br>
+		<font size="3" color="white">Account_Age, Gender<b>(Male - 1/ Female -0)</b>, User_Age, Link_Desc, Status_Count, Friend_Count, Location, Location_IP </b> </p></center>
+	
+	<font size="4" color="white"><center>{{ data }}</center></font>
+	
+	<form name="f1" method="post" action={% url 'UserCheck' %} OnSubmit="return validate()">
+	{% csrf_token %}
+	<br><br>
+	<TABLE align=center width="35%" class="notepad">
+		<TR><TH align="left"><font size="3" color="white">Account&nbsp;Details
+		<TD>&nbsp;&nbsp;<textarea name="t1" rows="5" cols="80"></textarea>
+		<div id='nameid'></div>
+		</TD>
+		</TR>
+		
+		  <TR>
+				 <TD></TD>
+			<TD>	
+		  <input type="submit" value="Submit">
+		 
+		  </TABLE>
+		
+</form>
+</div>
+
+</body>
+</html>
